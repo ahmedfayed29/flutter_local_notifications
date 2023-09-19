@@ -95,13 +95,9 @@ public class FlutterLocalNotificationsPlugin: NSObject, FlutterPlugin, UNUserNot
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "dexterous.com/flutter/local_notifications", binaryMessenger: registrar.messenger)
         let instance = FlutterLocalNotificationsPlugin.init(fromChannel: channel)
-        if #available(macOS 10.14, *) {
-            let center = UNUserNotificationCenter.current()
-            center.delegate = instance
-        } else {
-            let center = NSUserNotificationCenter.default
-            center.delegate = instance
-        }
+
+
+
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
 
